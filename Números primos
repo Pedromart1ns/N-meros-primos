@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main() {
+    int x, y, i, j;
+
+    // Pedir ao usuário os valores de x e y
+    printf("Digite o valor de x: ");
+    scanf("%d", &x);
+    printf("Digite o valor de y: ");
+    scanf("%d", &y);
+
+    // Verificar se x e y são números naturais maiores que zero
+    if (x <= 0 || y <= 0) {
+        printf("Os valores de x e y devem ser maiores que zero.\n");
+        return 1;
+    }
+
+    // Trocar os valores de x e y se necessário para garantir que x <= y
+    if (x > y) {
+        int temp = x;
+        x = y;
+        y = temp;
+    }
+
+    // Exibir os números primos no intervalo [x, y]
+    printf("Números primos no intervalo [%d, %d]: ", x, y);
+    for (i = x; i <= y; i++) {
+        // Verificar se i é primo
+        int primo = 1; // Suponha que i é primo
+        for (j = 2; j * j <= i; j++) {
+            if (i % j == 0) {
+                primo = 0; // i não é primo
+                break;
+            }
+        }
+        if (primo && i != 1) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+
+    return 0;
+}
